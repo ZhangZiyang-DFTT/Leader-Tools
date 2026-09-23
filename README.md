@@ -55,8 +55,7 @@ TIFF：`影片名_R04_HEAD_24FPS_1998x1080_Rec709_Full.00345360.tif`
 
 MOV：`影片名_R04_TAIL_23.976FPS_1998x1080_Rec709_Video.mov`
 
-TIFF 的点号后是时间码实际累计帧数，不是从 0 开始的局部帧号。每本放在 R04 等目录，`TIFF10_COMPAT` / `ProRes422HQ` 子目录区分存储编码。CSV、manifest 与 TIFF 描述同时记录逐帧时间码，MOV 则另有真实 tmcd 轨。
 
 ## 第三方声明
 
-本项目原始代码暂不授予开源许可；第三方组件遵循各自许可证。组件清单见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)，完整声明见 [ThirdPartyNotices.txt](Resources/ThirdPartyNotices.txt)，也可在应用“帮助 > 第三方组件与许可证”中查看。
+本项目第三方组件遵循各自许可证。组件清单见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)，完整声明见 [ThirdPartyNotices.txt](Resources/ThirdPartyNotices.txt)，也可在应用“帮助 > 第三方组件与许可证”中查看。
