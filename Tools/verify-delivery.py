@@ -120,7 +120,7 @@ def verify_movie(path, sequence, settings, rows, fps, nominal):
 
 def verify_batch(path):
     manifest = json.loads(path.read_text())
-    assert manifest["version"] == "1.1.5" and manifest["status"] == "complete", path
+    assert manifest["version"] == "1.1.6" and manifest["status"] == "complete", path
     root, settings = path.parent, manifest["settings"]
     fps = Fraction(settings["rate"]["numerator"], settings["rate"]["denominator"])
     nominal = nearest(fps)

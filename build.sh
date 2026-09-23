@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 cd "$(dirname "$0")"
+python3 Tools/generate-third-party-notices.py --check
 mkdir -p build "build/Leader Tools.app/Contents/MacOS" "build/Leader Tools.app/Contents/Resources"
 if [ "$(uname -m)" != "arm64" ]; then
     printf 'This build requires an Apple Silicon Mac and Xcode Command Line Tools.\n' >&2

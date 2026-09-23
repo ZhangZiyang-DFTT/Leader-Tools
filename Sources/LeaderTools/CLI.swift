@@ -20,7 +20,7 @@ enum LeaderCLI {
         }
         if args.first == "--help" {
             print("""
-            Leader Tools 1.1.5 / 10 nominal seconds / NDF
+            Leader Tools 1.1.6 / 10 nominal seconds / NDF
             --generate --output PATH [--title TEXT] [--company TEXT] [--notes TEXT] [--logo PATH]
               [--reels FIRST:LAST] [--fps 24000/1001] [--size 1920x1080] [--storage 16]
               [--mov|--mov-only] [--head-only|--tail-only] [--no-audio] [--no-compress]

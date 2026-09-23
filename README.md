@@ -1,4 +1,4 @@
-# Leader Tools 1.1.5
+# Leader Tools 1.1.6
 
 原生 macOS 十秒数字 Head / Tail Leader。独立片名 / 本号 / 备注信息卡、双时钟、固定边界三角、本号 NDF 时间码，以及 TIFF / ProRes 422 HQ 输出。三条 COMMAG / COMOPT 声画同步文字分别在原始帧位的正常双时钟画面上出现一帧；每秒仅反转时钟，2-pop 才全屏反转，橙黄色帧位数字始终保留原色。
 
@@ -6,10 +6,16 @@ Developed by [ZhangZiyang-DFTT](https://github.com/ZhangZiyang-DFTT) in collabor
 
 由 ZhangZiyang-DFTT 主导需求、电影工作流程设计与验收，OpenAI Codex 协助代码实现、测试和文档编写。
 
+## 许可与第三方声明
+
+本项目原始代码暂未授予开源许可；公开可见不等于另行授权使用或再分发，相关许可请联系维护者。第三方组件仍遵循各自原有许可证，不受此限制影响。
+
+组件、版本、来源与分发范围见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)，完整声明见 [ThirdPartyNotices.txt](Resources/ThirdPartyNotices.txt)。声明同时随应用和 DMG 提供，可通过应用的“帮助 > 第三方组件与许可证”查看。LibTIFF 是随应用分发的库，zlib 来自系统；Python/PyAV/FFmpeg 等仅用于开发验收。
+
 ## 下载
 
-- [下载 Leader Tools 1.1.5 DMG](https://github.com/ZhangZiyang-DFTT/Leader-Tools/releases/download/v1.1.5/Leader_Tools_1.1.5.dmg)
-- [版本说明与附件](https://github.com/ZhangZiyang-DFTT/Leader-Tools/releases/tag/v1.1.5)
+- [下载 Leader Tools 1.1.6 DMG](https://github.com/ZhangZiyang-DFTT/Leader-Tools/releases/download/v1.1.6/Leader_Tools_1.1.6.dmg)
+- [版本说明与附件](https://github.com/ZhangZiyang-DFTT/Leader-Tools/releases/tag/v1.1.6)
 
 安装包适用于 Apple Silicon Mac，构建目标为 macOS 13 及以上；不支持 Intel Mac。当前为 ad-hoc 签名，尚未完成 Apple Developer ID 签名和公证。安装包与源码分开发布；无需下载源码或安装开发依赖即可运行应用。
 
@@ -23,10 +29,10 @@ Apple Silicon，macOS 13 构建目标。静态 LibTIFF、系统 zlib、AVFoundat
 bash build.sh
 "build/Leader Tools.app/Contents/MacOS/LeaderTools" --self-test QA
 "build/Leader Tools.app/Contents/MacOS/LeaderTools" --review-stills QA/Stills
-bash package.sh "/absolute/path/Leader_Tools_1.1.5.dmg"
+bash package.sh "/absolute/path/Leader_Tools_1.1.6.dmg"
 ```
 
-构建需要 Xcode Command Line Tools 和正常访问系统图标 / ProRes 服务。打包脚本不覆盖已有同名 DMG。
+构建需要 Xcode Command Line Tools、Python 3（仅标准库，用于第三方声明校验）和正常访问系统图标 / ProRes 服务。打包脚本不覆盖已有同名 DMG。
 
 ## 使用
 

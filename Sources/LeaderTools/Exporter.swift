@@ -30,7 +30,7 @@ struct SequenceManifest: Codable {
 }
 struct ExportManifest: Codable {
     var application = "Leader Tools"
-    var version = "1.1.5"
+    var version = "1.1.6"
     var profile = "10-second NDF digital adaptation with EBU Tech 3203 reference markers"
     var created: Date
     var status: String
@@ -140,7 +140,7 @@ final class LeaderExporter {
                             if let tiffDir {
                                 let file = root.appendingPathComponent(tiffDir).appendingPathComponent(filename(i))
                                 let temp = file.appendingPathExtension("partial")
-                                let description = "Leader Tools 1.1.5; \(base); index=\(i); absoluteFrame=\(start+i); tc=\(Timecode.label(start+i, rate:s.rate)); fps=\(s.rate.rational); NDF; role=\(state.role.rawValue); storage=16bit-container; effectivePrecision=10bit"
+                                let description = "Leader Tools 1.1.6; \(base); index=\(i); absoluteFrame=\(start+i); tc=\(Timecode.label(start+i, rate:s.rate)); fps=\(s.rate.rational); NDF; role=\(state.role.rawValue); storage=16bit-container; effectivePrecision=10bit"
                                 try renderer.tiff(to: temp, settings: s, description: description)
                                 try fm.moveItem(at: temp, to: file)
                                 manifest.bytesWritten += fileSize(file)

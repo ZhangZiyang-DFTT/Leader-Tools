@@ -22,6 +22,13 @@ struct LeaderToolsApp: App {
             .defaultSize(width: 1280, height: 860)
             .commands {
                 CommandGroup(replacing: .newItem) {}
+                CommandGroup(after: .help) {
+                    Button("第三方组件与许可证") {
+                        if let url = Bundle.main.url(forResource: "ThirdPartyNotices", withExtension: "txt") {
+                            NSWorkspace.shared.open(url)
+                        }
+                    }
+                }
             }
     }
 }

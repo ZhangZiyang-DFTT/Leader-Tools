@@ -211,7 +211,7 @@ struct LeaderRootView: View {
             Image(systemName: "film.stack").font(.system(size: 23, weight: .medium))
                 .foregroundStyle(Color(red: 0.25, green: 0.78, blue: 0.72))
             Text("Leader Tools").font(.system(size: 20, weight: .semibold))
-            Text("1.1.5 · 10 SEC · NDF").font(.system(size: 11, weight: .medium, design: .monospaced))
+            Text("1.1.6 · 10 SEC · NDF").font(.system(size: 11, weight: .medium, design: .monospaced))
                 .foregroundStyle(.secondary).padding(.leading, 6)
             Spacer()
             icon("folder", "载入预设", action: model.loadPreset).disabled(model.exporting)

@@ -1,4 +1,4 @@
-Leader Tools 1.1.5 - DaVinci Resolve Full 读取说明
+Leader Tools 1.1.6 - DaVinci Resolve Full 读取说明
 
 TIFF：本版 Legal 黑白存为 16-bit RGB 的 4100 / 60218。
 片段属性 Data Levels 设 Full，按 0-1023 测量，黑白四舍五入为 64 / 940。

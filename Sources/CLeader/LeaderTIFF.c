@@ -51,7 +51,7 @@ int lt_write_tiff(const char *path, const float *rgba, uint32_t width,
         && TIFFSetField(t, TIFFTAG_FILLORDER, FILLORDER_MSB2LSB)
         && TIFFSetField(t, TIFFTAG_ROWSPERSTRIP, 16)
         && TIFFSetField(t, TIFFTAG_COMPRESSION, compressed ? COMPRESSION_ADOBE_DEFLATE : COMPRESSION_NONE)
-        && TIFFSetField(t, TIFFTAG_SOFTWARE, "Leader Tools 1.1.5 / LibTIFF")
+        && TIFFSetField(t, TIFFTAG_SOFTWARE, "Leader Tools 1.1.6 / LibTIFF")
         && TIFFSetField(t, TIFFTAG_IMAGEDESCRIPTION, description);
     if (compressed) ok = ok && TIFFSetField(t, TIFFTAG_ZIPQUALITY, 4);
     if (icc && icc_size) ok = ok && TIFFSetField(t, TIFFTAG_ICCPROFILE, icc_size, icc);

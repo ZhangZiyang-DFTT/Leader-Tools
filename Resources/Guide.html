@@ -2,12 +2,12 @@
 <html lang="zh-CN">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Leader Tools 1.1.5 · 交付说明</title>
+<title>Leader Tools 1.1.6 · 交付说明</title>
 <style>
 body{font:16px/1.8 -apple-system,BlinkMacSystemFont,sans-serif;color:#222;background:#fafafa;max-width:960px;margin:40px auto;padding:0 24px}
 h1{font-size:30px}h2{font-size:22px;margin-top:32px}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #ccc;padding:9px;text-align:left}code{background:#eee;padding:2px 5px}a{color:#08786e}
 </style>
-<h1>Leader Tools 1.1.5</h1>
+<h1>Leader Tools 1.1.6</h1>
 <p>十秒数字 Head / Tail · TIFF 与 ProRes 422 HQ · 本号 NDF 时间码</p>
 <h2>本版时序</h2>
 <p>下表按 24 FPS、240 帧、索引从 0 开始。片名、本号、备注是独立信息卡，不叠加在倒计时或黑场中。片名最多 15 字，按实际文字宽度等比缩小字号；备注可编辑、左对齐且上下居中。Logo 与出品方只在备注卡出现。</p>
@@ -68,4 +68,7 @@ h1{font-size:30px}h2{font-size:22px;margin-top:32px}table{border-collapse:collap
 <h2>安装与构建</h2>
 <p>Apple Silicon，构建目标 macOS 13 及以上；未在所有系统版本和 NLE 中验收。应用使用 ad-hoc 签名，未获 Apple Developer ID 签名或公证。不要关闭系统安全保护。源码、构建脚本、LibTIFF 源码归档和测试脚本位于 Develop/LeaderTools，执行 <code>bash build.sh</code> 重建。</p>
 <p>无网络功能、无 Python 或 FFmpeg 运行依赖。系统 AVFoundation 编码 MOV，LibTIFF 静态链接。批次使用唯一目录，失败 / 取消保留 .partial 与状态。磁盘空间不足时停止并保留已完成文件。</p>
+<h2>第三方组件与许可</h2>
+<p>完整版权和许可原文见 <a href="ThirdPartyNotices.txt">ThirdPartyNotices.txt</a>，也可从“帮助 &gt; 第三方组件与许可证”打开。LibTIFF 4.7.1 静态链接，其文件级独立条款与系统 zlib 声明均已保留；Python/PyAV/FFmpeg 等只用于开发验收，不随应用分发。</p>
+<p>Leader Tools 自身的原始代码暂未授予开源许可；公开仓库不代表对原始代码另行授予使用或再分发许可。第三方组件继续适用其各自条款。标准文档和用户参考媒体仅为设计参考，不随软件分发；Codex 协作署名不构成 OpenAI 的官方背书。</p>
 </html>
