@@ -1,0 +1,4 @@
+tifffile==2026.8.23
+imagecodecs==2026.8.16
+numpy==2.5.3
+av==18.1.0

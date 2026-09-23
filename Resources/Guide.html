@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leader Tools 1.1.5 · 交付说明</title>
+<style>
+body{font:16px/1.8 -apple-system,BlinkMacSystemFont,sans-serif;color:#222;background:#fafafa;max-width:960px;margin:40px auto;padding:0 24px}
+h1{font-size:30px}h2{font-size:22px;margin-top:32px}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #ccc;padding:9px;text-align:left}code{background:#eee;padding:2px 5px}a{color:#08786e}
+</style>
+<h1>Leader Tools 1.1.5</h1>
+<p>十秒数字 Head / Tail · TIFF 与 ProRes 422 HQ · 本号 NDF 时间码</p>
+<h2>本版时序</h2>
+<p>下表按 24 FPS、240 帧、索引从 0 开始。片名、本号、备注是独立信息卡，不叠加在倒计时或黑场中。片名最多 15 字，按实际文字宽度等比缩小字号；备注可编辑、左对齐且上下居中。Logo 与出品方只在备注卡出现。</p>
+<table><tr><th>Head 索引</th><th>距 FFOA 帧数</th><th>画面</th></tr>
+<tr><td>0</td><td>240</td><td>HEAD 与向右箭头</td></tr>
+<tr><td>1–20</td><td>239–220</td><td>仅片名</td></tr>
+<tr><td>21–25</td><td>219–215</td><td>第 X 本头 / REEL 04</td></tr>
+<tr><td>26–47</td><td>214–193</td><td>备注、可选出品方 / Logo</td></tr>
+<tr><td>48</td><td>192</td><td>开始 / PICTURE START / 装在片门，不显示其他内容</td></tr>
+<tr><td>49–191</td><td>191–49</td><td>双时钟倒计时；下列三帧在正常画面上各叠加一条声画同步文字</td></tr>
+<tr><td>68</td><td>172</td><td>正常双时钟 + 左侧时钟下方“16 COMMAG SYNC”，仅此一帧</td></tr>
+<tr><td>70</td><td>170</td><td>正常双时钟 + 左侧时钟下方“16 COMOPT SYNC”，仅此一帧</td></tr>
+<tr><td>76</td><td>164</td><td>正常双时钟 + 左侧时钟下方“35 COMOPT SYNC”，仅此一帧</td></tr>
+<tr><td>96</td><td>144</td><td>SOUND START，沿用 EBU START 的胶片声轨同步参考帧位</td></tr>
+<tr><td>192</td><td>48</td><td>2-pop：全屏反相，但橙黄色当前帧位数字保留原色</td></tr>
+<tr><td>193–238</td><td>47–2</td><td>纯黑</td></tr>
+<tr><td>239</td><td>1</td><td>向下空心三角，下一帧接 FFOA</td></tr></table>
+<p>原需求在 214、192 两处有重叠。本版将 214 分配给备注、192 分配给 PICTURE START，以避免一帧同时承担两个内容。非 24 FPS 的前两秒信息卡及 SOUND START 帧按标称帧率 / 24 就近映射。</p>
+<p>三条声画同步文字不是持续水印，也不取代倒计时。它们分别只在剩余 172、170、164 帧的正常双时钟画面上出现一帧，前后相邻帧不显示；非 24 FPS 按标称帧率 / 24 就近映射，仍各占一帧。片名、备注、PICTURE START、SOUND START、三角和纯黑等非时钟帧保持原有独立内容。每秒边界仅反转两个时钟圆盘及其内部灰阶内容，背景和同步文字不闪白；2-pop 才反转整个画面。两种反相均保留橙黄色当前帧位数字，不变成蓝色。</p>
+<table><tr><th>Tail 索引</th><th>画面</th></tr>
+<tr><td>0</td><td>向上空心三角；前一帧为 LFOA</td></tr>
+<tr><td>1–46</td><td>纯黑</td></tr>
+<tr><td>47</td><td>反相双时钟 2-pop，距 LFOA 帧首 48 帧</td></tr>
+<tr><td>48–191</td><td>纯黑</td></tr>
+<tr><td>192–211</td><td>仅片名</td></tr>
+<tr><td>212–216</td><td>第 X 本尾 / REEL 04</td></tr>
+<tr><td>217–238</td><td>备注、可选出品方 / Logo</td></tr>
+<tr><td>239</td><td>END OF REEL，仅此一帧</td></tr></table>
+<p>三角位置、Tail 的 LFOA 基准均固定，没有切换选项。右下角 FT / 35MM 时钟已移除，画面没有 Rec.709 或 10-bit 叠字。刻度角度为 <code>2π × f / 标称帧率</code>，包括 25p 的首尾刻度间隔均相等。高帧率只显示等分的部分刻度数字，所有帧仍有独立指针位置。</p>
+<h2>非整数帧率与时间码</h2>
+<p>采用电影 NDF 工作流，不采用 29.97 DF 的时间码跳号规则。帧率使用精确有理数；23.976 是 24000/1001，29.97 是 30000/1001，59.94 是 60000/1001。不存在通过删除或重复图像使时长“凑整”的操作。</p>
+<p>一段为 <code>10 × 标称帧率</code> 帧，每帧播放时长为分母 / 分子。因此 23.976 为 240 帧、29.97 为 300 帧、59.94 为 600 帧、239.76 为 2400 帧，各为 10.01 实秒。整数帧率的段长为准确 10 实秒。2-pop 的两个标称秒在 1000/1001 时基下为 2.002 实秒。这与按 NDF 时间码安排整十秒相一致。</p>
+<p>每本 Head 的 FFOA 参考设在本号整点，Head 从该点前十个标称秒开始。第四本：<strong>HEAD 首帧 03:59:50:00；PICTURE START 03:59:52:00；FFOA 04:00:00:00</strong>。</p>
+<p>按本次交付约定，<strong>第四本 Tail 首帧独立从 04:00:00:00 开始</strong>，不读取正片时长。这个独立时间码起点不等于正片实际结束时间码；将 Tail 接到正片之后时，以帧相邻关系保持 LFOA 同步位置。24 FPS 的 Tail 2-pop 索引 47，时间码为 04:00:01:23。</p>
+<p>本号支持 1–23，使用小时位区分本号，避免跨 24 小时产生重复码。超过 100 FPS 时内部 FF 为三位数字；MOV 时间码轨的 frameQuanta 写入完整标称帧率，部分接收软件可能用半速时间码显示 HFR，应以逐帧 CSV 校对。自定义支持整数帧率及 1000/1001 家族。</p>
+<h2>命名与格式</h2>
+<p><code>影片名_R04_HEAD_24FPS_1998x1080_Rec709_Full.00345360.tif</code></p>
+<p>帧号为 NDF 时间码的实际累计帧数，补齐至少八位，不从零重置。上例对应 24 FPS 的 03:59:50:00。每个批次按本号分组，<code>TIFF10_COMPAT</code> 文件夹存放 10-bit 有效精度兼容 TIFF；ProRes422HQ 文件夹区分 MOV 编码，避免破坏指定的基本命名模板。</p>
+<p><code>影片名_R04_TAIL_23.976FPS_1998x1080_Rec709_Video.mov</code></p>
+<ul>
+<li>TIFF10_COMPAT：BitsPerSample=16,16,16。两种范围均使用 round(q10×65535/1023)。Full 黑白为 0 / 65535；Legal（Video）黑白为 4100 / 60218。以 Full 读取并四舍五入到 10-bit 后为 64 / 940，不再使用导致白色读作 939 的左移写法。灰阶和抗锯齿保留中间值。</li>
+<li>TIFF 可选 Full 0–1023 或 Video 64–940，Rec.709 ICC；Deflate 无损压缩或无压缩。</li>
+<li>MOV：Apple ProRes 422 HQ，10-bit 4:2:2；浮点 RGB 通过 Rec.709 矩阵转换成原生 10-bit v210，再交给系统编码器，不经过 8-bit 中间图像。YCbCr 为 Video 范围，文件名因此写 Video；与 Full RGB TIFF 的范围标记不同，不是把 Video 冒充 Full。</li>
+<li>Resolve 21.1 的 ProRes Full 解码实测会把原始 940 归一化成约 939.096。MOV 批次附带 Resolve_Full_Readback，含专用 DCTL 和使用限制，用于该读取路径恢复 64/940；原始 MOV 不写成非标准的 941。此校正不自动写入视频，不能用于 TIFF、Video/Auto 或其他已正确读取的路径。</li>
+<li>MOV 写入真实 tmcd 时间码轨并与视频关联，视频采样时间戳使用精确分子 / 分母。TIFF 本身不保证在所有 NLE 中携带时间码或帧率，文件编号、ImageDescription、CSV 和 manifest 同时记录。</li>
+<li>可选 48 kHz / 24-bit PCM 单声道同步音轨与 WAV，2-pop 的一帧内为 1 kHz、-20 dBFS 峰值正弦波，其他时间静音。音频采样边界按有理数就近取整。</li>
+</ul>
+<p>1.1.2 的 packed 10-bit TIFF 可被 LibTIFF 解码，但 macOS ImageIO / Quick Look 无法可靠读取，因此 1.1.3 统一改用上述兼容容器。PNG 只供视觉检查。DCI 2K / 4K 是尺寸预设，不代表 XYZ、DCDM、HDR 或 DCI 色彩认证。</p>
+<h2>依据与适配边界</h2>
+<p>本版是按需求组合的十秒数字适配，不是完整物理胶片标准认证复刻。参考资料：</p>
+<ul>
+<li><a href="https://tech.ebu.ch/docs/tech/tech3203.pdf">EBU Tech 3203 (1973)</a>：Frame 172 / 170 / 164 分别是 16 COMMAG / 16 COMOPT / 35 COMOPT 的单帧声画同步指示，Frame 144 是所有声轨的 START 参考。为了让数字工作流更易理解，本版仅把该帧的显示文字改为 SOUND START，时间位置不变。其原始 240–193 帧是 10 / 9 倒计时，本版按需求改为信息段。</li>
+<li><a href="https://pub.smpte.org/doc/st55/20100923-pub/st0055-2011.pdf">SMPTE ST 55:2011</a>：电视胶片 Leader 的秒数倒计时与接片规则。</li>
+<li><a href="https://pub.smpte.org/doc/st301/20051216-pub/st0301-2005_stable2015.pdf">SMPTE ST 301:2005</a>：影院胶片 Leader，采用 16 格单位而不是本版秒数双时钟。</li>
+<li><a href="https://developer.apple.com/library/archive/technotes/tn2310/_index.html">Apple TN2310</a>：QuickTime 时间码轨与视频关联、时间码格式描述。</li>
+</ul>
+<p>COMMAG / COMOPT 是不同胶片制式的声重放头位置指示：16 COMMAG 为 16 mm 磁性声带，16 COMOPT 为 16 mm 光学声轨，35 COMOPT 为 35 mm 光学声轨；其帧位按各声头到片门相对于 Frame 144 START 的机械距离安排。因此本版保留三个原始相对帧位，并让每项只出现一帧。数字 HFR 映射仅保留时间比例，不宣称复制实际胶片机械距离。音频 2-pop 固定在两秒。本版不生成光学声轨、保护胶片、换机点或四格占位色卡。</p>
+<h2>安装与构建</h2>
+<p>Apple Silicon，构建目标 macOS 13 及以上；未在所有系统版本和 NLE 中验收。应用使用 ad-hoc 签名，未获 Apple Developer ID 签名或公证。不要关闭系统安全保护。源码、构建脚本、LibTIFF 源码归档和测试脚本位于 Develop/LeaderTools，执行 <code>bash build.sh</code> 重建。</p>
+<p>无网络功能、无 Python 或 FFmpeg 运行依赖。系统 AVFoundation 编码 MOV，LibTIFF 静态链接。批次使用唯一目录，失败 / 取消保留 .partial 与状态。磁盘空间不足时停止并保留已完成文件。</p>
+</html>

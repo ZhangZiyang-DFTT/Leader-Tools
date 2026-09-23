@@ -1,0 +1,6 @@
+// Only for ProRes decoded as Full using q10*64/65535. Not for TIFF or Video/Auto.
+__DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p_R, float p_G, float p_B)
+{
+    const float gain = 65535.0f / (1023.0f * 64.0f);
+    return make_float3(p_R * gain, p_G * gain, p_B * gain);
+}

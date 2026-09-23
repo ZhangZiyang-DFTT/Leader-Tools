@@ -1,0 +1,4 @@
+module CLeader {
+    header "LeaderTIFF.h"
+    export *
+}
