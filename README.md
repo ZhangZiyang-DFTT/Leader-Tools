@@ -2,6 +2,19 @@
 
 原生 macOS 十秒数字 Head / Tail Leader。独立片名 / 本号 / 备注信息卡、双时钟、固定边界三角、本号 NDF 时间码，以及 TIFF / ProRes 422 HQ 输出。三条 COMMAG / COMOPT 声画同步文字分别在原始帧位的正常双时钟画面上出现一帧；每秒仅反转时钟，2-pop 才全屏反转，橙黄色帧位数字始终保留原色。
 
+Developed by [ZhangZiyang-DFTT](https://github.com/ZhangZiyang-DFTT) in collaboration with OpenAI Codex.
+
+由 ZhangZiyang-DFTT 主导需求、电影工作流程设计与验收，OpenAI Codex 协助代码实现、测试和文档编写。
+
+## 下载
+
+- [下载 Leader Tools 1.1.5 DMG](https://github.com/ZhangZiyang-DFTT/Leader-Tools/releases/download/v1.1.5/Leader_Tools_1.1.5.dmg)
+- [版本说明与附件](https://github.com/ZhangZiyang-DFTT/Leader-Tools/releases/tag/v1.1.5)
+
+安装包适用于 Apple Silicon Mac，构建目标为 macOS 13 及以上；不支持 Intel Mac。当前为 ad-hoc 签名，尚未完成 Apple Developer ID 签名和公证。安装包与源码分开发布；无需下载源码或安装开发依赖即可运行应用。
+
+TIFF/MOV 的范围说明及 Resolve Full 读取校正限制见下方“像素管线”和 Release 附件。
+
 ## 运行与构建
 
 Apple Silicon，macOS 13 构建目标。静态 LibTIFF、系统 zlib、AVFoundation、CoreGraphics / CoreText 和 SwiftUI；应用运行不需要 Python、FFmpeg、Homebrew 或网络。ad-hoc 签名，未进行 Apple Developer ID 签名或公证。
